@@ -2,7 +2,7 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8" />
-        <title>iTL Opencampus</title>
+        <title>中央大学国際情報学部オープンキャンパス</title>
 
         <link
             rel="preconnect"
@@ -22,11 +22,15 @@
         <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
         <script src="images.js"></script>
 
-        <link rel="stylesheet" href="style.css" />
+        <link
+            rel="stylesheet"
+            href="style.css"
+        />
     </head>
     <body>
         <div class="container">
-            <h1>iTL OpenCampus AIハンズオン</h1>
+            <h1>中央大学国際情報学部オープンキャンパス</h1>
+            <h3>～画像認識AIの動作と裏側の開発を体験してみよう～</h3>
 
             <div class="display-area">
                 <div>
@@ -56,8 +60,9 @@
                 </button>
                 <button onclick="runInference()">AIで解析</button>
                 <button onclick="visualizeDifference()">
-                    XAI (Explainable AI) フィルター適用
+                    XAIフィルター適用
                 </button>
+                <p>※XAI: Explainable AI (説明可能なAI)</p>
             </div>
 
             <div
@@ -67,6 +72,9 @@
                 画像をロードして解析ボタンを押してください。
             </div>
         </div>
+        <footer>
+            <p>中央大学国際情報学部事務室, GDGoC Chuo University</p>
+        </footer>
 
         <script src="script.js"></script>
     </body>
