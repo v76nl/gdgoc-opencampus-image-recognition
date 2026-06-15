@@ -1,0 +1,44 @@
+body {
+    font-family: "Zen Maru Gothic", sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+}
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.display-area {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+canvas {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+button {
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #0056b3;
+}
+.result-box {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 700;
+}
