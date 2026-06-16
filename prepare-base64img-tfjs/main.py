@@ -65,14 +65,24 @@ for i in range(iterations):
 
 # 画像の保存
 # 元画像と加工画像を比較可能にするため両方とも保存する
-os.makedirs("assets", exist_ok=True)
 original_image_array = deprocess_image(tf.convert_to_tensor(input_image))
 adversarial_image_array = deprocess_image(adversarial_tensor)
 
-Image.fromarray(original_image_array).save("assets/original.png")
-Image.fromarray(adversarial_image_array).save("assets/hacked.png")
+original_img = Image.fromarray(original_image_array)
+adversarial_img = Image.fromarray(adversarial_image_array)
 
-print(f"生成された画像: {os.path.abspath('assets')}")
+# prepare/ 直下に保存
+original_img.save("original.png")
+adversarial_img.save("hacked.png")
+
+# handson/ 直下にも保存
+current_dir = os.path.dirname(os.path.abspath(__file__))
+handson_dir = os.path.join(current_dir, "..", "handson-base64img-tfjs")
+os.makedirs(handson_dir, exist_ok=True)
+original_img.save(os.path.join(handson_dir, "original.png"))
+adversarial_img.save(os.path.join(handson_dir, "hacked.png"))
+
+print(f"生成された画像: {os.path.abspath('.')}")
 
 # Base64データをimages.jsに書き出す
 def get_base64_data_url(image_array):
@@ -101,7 +111,7 @@ print(f"images.js を {js_path} に保存")
 print("画像データの最大差分 (0-255スケール):", np.max(np.abs(original_image_array.astype(float) - adversarial_image_array.astype(float))))
 
 # 生成した元画像と加工画像のテスト推論
-orig_img = Image.open("assets/original.png")
+orig_img = Image.open("original.png")
 orig_input = preprocess_image(orig_img)
 orig_pred = model(orig_input)
 decoded_orig = tf.keras.applications.mobilenet_v2.decode_predictions(orig_pred.numpy(), top=3)[0]
@@ -109,7 +119,7 @@ print("Python側でのオリジナル画像判定結果:")
 for i, (imagenet_id, label, prob) in enumerate(decoded_orig):
     print(f"  {i+1}: {label} ({prob*100:.2f}%)")
 
-hacked_img = Image.open("assets/hacked.png")
+hacked_img = Image.open("hacked.png")
 hacked_input = preprocess_image(hacked_img)
 hacked_pred = model(hacked_input)
 decoded_hacked = tf.keras.applications.mobilenet_v2.decode_predictions(hacked_pred.numpy(), top=3)[0]
