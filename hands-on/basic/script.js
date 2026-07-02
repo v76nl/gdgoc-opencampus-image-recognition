@@ -13,11 +13,12 @@ function loadSelectedImage(type) {
 }
 
 async function loadModel() {
-    document.getElementById("resultBox").innerText =
-        "AIモデルを読み込み中……";
+    const statusEl = document.getElementById("modelStatus");
+    statusEl.innerText = "AIモデルを読み込み中……";
+    statusEl.classList.remove("ready");
     model = await mobilenet.load({ version: 2, alpha: 1.0 });
-    document.getElementById("resultBox").innerText =
-        "AIモデルの準備が完了しました。";
+    statusEl.innerText = "AIモデルの準備が完了しました。";
+    statusEl.classList.add("ready");
 }
 
 function drawImage(imageSrc) {

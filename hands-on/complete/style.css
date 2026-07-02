@@ -100,3 +100,18 @@ button:hover::after {
 .tab-button.active:hover {
     background-color: #d32f2f;
 }
+
+.model-status {
+    margin-bottom: 20px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    background-color: #ffebee;
+    color: #c62828;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.model-status.ready {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
