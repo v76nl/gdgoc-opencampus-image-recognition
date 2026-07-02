@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <title>中央大学国際情報学部オープンキャンパス</title>
+
+        <link
+            rel="preconnect"
+            href="https://fonts.googleapis.com"
+        />
+        <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossorigin
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
+        <script src="../images.js"></script>
+
+        <link
+            rel="stylesheet"
+            href="style.css"
+        />
+        <link
+            rel="icon"
+            id="favicon"
+            type="image/x-icon"
+            href=""
+        />
+    </head>
+    <body>
+        <div class="container">
+            <h1>中央大学国際情報学部オープンキャンパス</h1>
+            <h3>～画像認識AIの動作と裏側の開発を体験してみよう～</h3>
+
+            <div class="display-area">
+                <div>
+                    <h3>入力画像</h3>
+                    <canvas
+                        id="mainCanvas"
+                        width="224"
+                        height="224"
+                    ></canvas>
+                </div>
+                <div>
+                    <h3>AIの視界</h3>
+                    <canvas
+                        id="xaiCanvas"
+                        width="224"
+                        height="224"
+                    ></canvas>
+                </div>
+            </div>
+
+            <div class="subject-selector">
+                <button
+                    id="dogTab"
+                    class="tab-button"
+                    onclick="selectSubject('dog')"
+                >
+                    犬の画像
+                </button>
+                <button
+                    id="catTab"
+                    class="tab-button"
+                    onclick="selectSubject('cat')"
+                >
+                    猫の画像
+                </button>
+            </div>
+
+            <div>
+                <button onclick="loadSelectedImage('original')">
+                    正常な画像を読込
+                </button>
+                <button onclick="loadSelectedImage('hacked')">
+                    加工された画像を読込
+                </button>
+                <button onclick="runInference()">AIで解析</button>
+                <button onclick="visualizeDifference()">
+                    XAIフィルター適用
+                </button>
+                <p>※XAI: Explainable AI (説明可能なAI)</p>
+            </div>
+
+            <div
+                id="resultBox"
+                class="result-box"
+            >
+                画像をロードして解析ボタンを押してください。
+            </div>
+        </div>
+        <footer>
+            <p>中央大学国際情報学部事務室, GDGoC Chuo University</p>
+        </footer>
+
+        <script src="script.js"></script>
+    </body>
+</html>

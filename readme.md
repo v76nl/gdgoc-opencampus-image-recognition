@@ -33,13 +33,18 @@ Base64 + TensorFlow.js。
 .
 ├── hands-on/                    # フロントエンド側コード
 │   ├── index.html               # 完成版（complete）へのリダイレクトHTML
-│   ├── images.js                # base64エンコードされた画像データ（自動生成・templateとcompleteで共有）
-│   ├── template/                # 参加者配布用テンプレート（TODO部分あり、未完成な状態）
+│   ├── images.js                # base64エンコードされた画像データ（自動生成・各バージョンで共有）
+│   ├── template/                # ① 参加者配布用テンプレート（TODO部分あり、未完成な状態）
 │   │   ├── index.html
 │   │   ├── style.css
 │   │   └── script.js
 │   │
-│   └── complete/                # 完成版（すべての機能が実装済みの検証用）
+│   ├── basic/                   # ② 最低限の機能が動作する中間状態のコード
+│   │   ├── index.html
+│   │   ├── style.css
+│   │   └── script.js
+│   │
+│   └── complete/                # ③ 全機能が実装済みの答えのコード
 │       ├── index.html
 │       ├── style.css
 │       └── script.js
