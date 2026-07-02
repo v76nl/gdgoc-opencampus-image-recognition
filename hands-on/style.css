@@ -67,8 +67,15 @@ button:hover::after {
 .subject-selector {
     display: flex;
     justify-content: center;
-    gap: 15px;
     margin-bottom: 25px;
+    :nth-child(1) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    :nth-child(2) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
 }
 
 .tab-button {
