@@ -1,6 +1,6 @@
 # gdgoc-opencampus-image-recognition
 
-オープンキャンパスの環境 (502WS / PC室) で開発体験を行うことが可能な、画像解析GUIアプリプロジェクト
+オープンキャンパスの環境 (iTL502WS / PC室) で開発体験を行うことが可能な、画像解析GUIアプリプロジェクト
 
 試す: https://v76nl.github.io/gdgoc-opencampus-image-recognition/
 
@@ -19,7 +19,7 @@ Base64 + TensorFlow.js。
 
 - 機能: 判定結果の簡略化・日本語化
 
-    判定時に、ImageNet の専門的な品種名（tabby, golden retriever 等）を自動で「ネコ (cat)」「イヌ (dog)」のように分かりやすい日本語に翻訳して出力します。
+    判定時に、ImageNet の専門的な品種名（tabby, golden retriever 等）を自動で「ネコ (cat)」「イヌ (dog)」のように分かりやすい日本語に翻訳して出力する。
 
 - 技術的な補足
 
@@ -42,6 +42,9 @@ Base64 + TensorFlow.js。
 
 ## TODO
 
-- setup
-    1. 誤認識部分を切り出す
-    2. 参加者に書いてもらう部分をTODOとして切り出す
+1. 7/15まで: 犬と猫の画像を表示するボタンを隠す、※隠すだけで、あとで見せる余地は残したいので、削除はしない
+
+    意図: 最初の段階で要素が多いと参加者が混乱しそうだから
+
+2. 7/15まで: html, css, jsの隠す部分、つまり参加者に書いてもらう部分を決め、TODOとして切り出し隠す
+3. 誤認識部分を切り出す
