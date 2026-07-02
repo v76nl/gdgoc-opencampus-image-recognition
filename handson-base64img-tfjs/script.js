@@ -9,9 +9,36 @@ let originalImageData = null;
 // 現在ロードされている画像のピクセルデータ
 let currentImageData = null;
 
+// 現在選択されている対象 (dog / cat)
+let currentSubject = "dog";
+
+function selectSubject(subject) {
+    currentSubject = subject;
+    
+    // タブのスタイル更新
+    document.querySelectorAll(".tab-button").forEach(btn => {
+        btn.classList.remove("active");
+    });
+    const activeTab = document.getElementById(`${subject}Tab`);
+    if (activeTab) {
+        activeTab.classList.add("active");
+    }
+    
+    // 対象切り替え時に自動的にオリジナル画像をロードして表示
+    loadOriginalImage();
+    loadSelectedImage("original");
+}
+
+function loadSelectedImage(type) {
+    const base64 = type === "original"
+        ? (currentSubject === "dog" ? DOG_ORIGINAL_IMAGE_BASE64 : CAT_ORIGINAL_IMAGE_BASE64)
+        : (currentSubject === "dog" ? DOG_HACKED_IMAGE_BASE64 : CAT_HACKED_IMAGE_BASE64);
+    drawImage(base64);
+}
+
 function loadOriginalImage() {
     const img = new Image();
-    img.src = ORIGINAL_IMAGE_BASE64;
+    img.src = currentSubject === "dog" ? DOG_ORIGINAL_IMAGE_BASE64 : CAT_ORIGINAL_IMAGE_BASE64;
     img.onload = () => {
         try {
             const tempCanvas = document.createElement("canvas");
@@ -58,6 +85,37 @@ function drawImage(imageSrc) {
     };
 }
 
+// 英語の判定結果を日本語（およびシンプルな英語表記）に翻訳・簡略化する関数
+function translateClassName(className) {
+    const lower = className.toLowerCase();
+    
+    if (lower.includes("banana")) {
+        return "バナナ (banana)";
+    }
+    
+    // 猫の判定
+    if (
+        lower.includes("cat") || 
+        lower.includes("tabby") || 
+        lower.includes("siamese") || 
+        lower.includes("persian")
+    ) {
+        return "ネコ (cat)";
+    }
+    
+    // 犬の判定
+    if (
+        lower.includes("dog") || 
+        lower.includes("retriever") || 
+        lower.includes("saluki") || 
+        lower.includes("setter")
+    ) {
+        return "イヌ (dog)";
+    }
+    
+    return className;
+}
+
 async function runInference() {
     if (!model) {
         alert("AIモデルの読み込みが終わっていません。");
@@ -71,8 +129,10 @@ async function runInference() {
         2
     );
 
+    const displayClassName = translateClassName(topPrediction.className);
+
     document.getElementById("resultBox").innerText =
-        `判定結果: ${topPrediction.className} (確信度: ${probability}%)`;
+        `判定結果: ${displayClassName} (確信度: ${probability}%)`;
 }
 
 function visualizeDifference() {
@@ -123,5 +183,5 @@ function visualizeDifference() {
 }
 
 // 初期化処理の実行
-loadOriginalImage();
+selectSubject("dog");
 loadModel();
