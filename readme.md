@@ -3,36 +3,15 @@
 オープンキャンパスの環境 (iTL502WS / PC室) で開発体験を行うことが可能な、画像解析GUIアプリプロジェクト
 
 completeを試す: https://v76nl.github.io/gdgoc-opencampus-image-recognition/complete/index.html
+
 basicを試す: https://v76nl.github.io/gdgoc-opencampus-image-recognition/basic/index.html
+
 templateを試す: https://v76nl.github.io/gdgoc-opencampus-image-recognition/template/index.html
-
-## オープンキャンパスの環境
-
-- vscodeあり
-- pythonなし
-- Android Studioあり
-
-## 仕組み
-
-Base64 + TensorFlow.js。
-ローカルサーバーが立てにくい環境なので、CORSやWebGL Tainted canvas エラーを回避するため、画像ファイルをあらかじめ Python で Base64 データ URL 形式に変換し、JavaScript の定数として `images.js` に出力しておく。
-
-## その他
-
-- 機能: 判定結果の簡略化・日本語化
-
-    判定時に、ImageNet の専門的な品種名（tabby, golden retriever 等）を自動で「ネコ (cat)」「イヌ (dog)」のように分かりやすい日本語に翻訳して出力する。
-
-- 技術的な補足
-
-    ピクセル差分の計算処理は、Canvas 標準の `Uint8ClampedArray` (1次元の型付き配列) のまま直接アクセスして処理。オブジェクトへの変換を挟まないことで、メモリアロケーションと型変換のオーバーヘッドを無くしている。
-
-- `hands-on/` にはpngファイルがあるが、実際に使う画像の本体はimages.jsにあるbase64文字列なので、これらpngファイルはあくまでイメージのためだけ。
 
 ## ディレクトリ構造
 
 ```text
-.
+gdgoc-opencampus-image-recognition
 ├── hands-on/                    # フロントエンド側コード
 │   ├── index.html               # 完成版（complete）へのリダイレクトHTML
 │   ├── images.js                # base64エンコードされた画像データ（自動生成・各バージョンで共有）
@@ -59,32 +38,54 @@ Base64 + TensorFlow.js。
 ## 参加者向けTODO
 
 1. HTML: ボタンを見かけだけ作成する
-2. HTML: ボタンに機能を付加する (JS側では実装済み)
+2. HTML: ボタンに機能を付加する
+
+    JS側では `loadSelectedImage()` は実装済みなので「画像を読込」ボタンは動くが、`runInference()` が未実装なのでAI解析は行われない
+
 3. CSS: ボタンに色をつける
+4. JS: `runInference()` を実装する
 
 ## 開発TODO
 
-1. 7/15まで: 犬と猫の画像を表示するボタンを隠す、※隠すだけで、あとで見せる余地は残したいので、削除はしない
+現在なし
 
-    意図: 最初の段階で要素が多いと参加者が混乱しそうだから
+## オープンキャンパスの環境
 
-2. 7/15まで: html, css, jsの隠す部分、つまり参加者に書いてもらう部分を決め、TODOとして切り出し隠す
-3. 誤認識部分を切り出す
+- vscodeあり
+- pythonなし
+- Android Studioあり
+
+## 仕組み
+
+Base64 + TensorFlow.js。<br>
+ローカルサーバーが立てにくい環境なので、CORSやWebGL Tainted canvas エラーを回避するため、画像ファイルをあらかじめ Python で Base64 データ URL 形式に変換し、JavaScript の定数として `images.js` に出力しておく。
+
+## その他
+
+- 機能: 判定結果の簡略化・日本語化
+
+    判定時に、ImageNet の専門的な品種名（tabby, golden retriever 等）を自動で「ネコ (cat)」「イヌ (dog)」のように分かりやすい日本語に翻訳して出力する。
+
+- 技術的な補足
+
+    ピクセル差分の計算処理は、Canvas 標準の `Uint8ClampedArray` (1次元の型付き配列) のまま直接アクセスして処理。オブジェクトへの変換を挟まないことで、メモリアロケーションと型変換のオーバーヘッドを無くしている。
+
+- `hands-on/` にはpngファイルがあるが、実際に使う画像の本体はimages.jsにあるbase64文字列なので、これらpngファイルはあくまでイメージのためだけ。
 
 ## ファイル単位での比較
 
 - template と basic の比較
 
-```bash
-git diff --no-index hands-on/template/script.js hands-on/basic/script.js
-git diff --no-index hands-on/template/index.html hands-on/basic/index.html
-git diff --no-index hands-on/template/style.css hands-on/basic/style.css
-```
+    ```bash
+    git diff --no-index hands-on/template/script.js hands-on/basic/script.js
+    git diff --no-index hands-on/template/index.html hands-on/basic/index.html
+    git diff --no-index hands-on/template/style.css hands-on/basic/style.css
+    ```
 
 - basic と complete の比較
 
-```bash
-git diff --no-index hands-on/basic/script.js hands-on/complete/script.js
-git diff --no-index hands-on/basic/index.html hands-on/complete/index.html
-git diff --no-index hands-on/basic/style.css hands-on/complete/style.css
-```
+    ```bash
+    git diff --no-index hands-on/basic/script.js hands-on/complete/script.js
+    git diff --no-index hands-on/basic/index.html hands-on/complete/index.html
+    git diff --no-index hands-on/basic/style.css hands-on/complete/style.css
+    ```
