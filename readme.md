@@ -2,7 +2,9 @@
 
 オープンキャンパスの環境 (iTL502WS / PC室) で開発体験を行うことが可能な、画像解析GUIアプリプロジェクト
 
-試す: https://v76nl.github.io/gdgoc-opencampus-image-recognition/
+completeを試す: https://v76nl.github.io/gdgoc-opencampus-image-recognition/complete/index.html
+basicを試す: https://v76nl.github.io/gdgoc-opencampus-image-recognition/basic/index.html
+templateを試す: https://v76nl.github.io/gdgoc-opencampus-image-recognition/template/index.html
 
 ## オープンキャンパスの環境
 
@@ -54,7 +56,13 @@ Base64 + TensorFlow.js。
     └── assets/                  # 生成された画像ファイル（オリジナル・ハック後）
 ```
 
-## TODO
+## 参加者向けTODO
+
+1. HTML: ボタンを見かけだけ作成する
+2. HTML: ボタンに機能を付加する (JS側では実装済み)
+3. CSS: ボタンに色をつける
+
+## 開発TODO
 
 1. 7/15まで: 犬と猫の画像を表示するボタンを隠す、※隠すだけで、あとで見せる余地は残したいので、削除はしない
 
@@ -65,7 +73,7 @@ Base64 + TensorFlow.js。
 
 ## ファイル単位での比較
 
-- basic と template の比較
+- template と basic の比較
 
 ```bash
 git diff --no-index hands-on/template/script.js hands-on/basic/script.js
