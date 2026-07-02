@@ -2,6 +2,8 @@
 
 オープンキャンパスの環境 (502WS / PC室) で開発体験を行うことが可能な、画像解析GUIアプリプロジェクト
 
+試す: https://v76nl.github.io/gdgoc-opencampus-image-recognition/
+
 ## オープンキャンパスの環境
 
 - vscodeあり
@@ -43,5 +45,3 @@ Base64 + TensorFlow.js。
 - setup
     1. 誤認識部分を切り出す
     2. 参加者に書いてもらう部分をTODOとして切り出す
-- others
-    1. 確認などのためにWeb公開 (本番ではローカルでやるので使わないが)
