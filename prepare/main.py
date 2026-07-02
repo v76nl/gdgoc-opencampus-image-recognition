@@ -99,9 +99,9 @@ for target in targets:
     original_img.save(f"{name}_original.png")
     adversarial_img.save(f"{name}_hacked.png")
 
-    # handson/ 直下にも保存
+    # hands-on/ 直下にも保存
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    handson_dir = os.path.join(current_dir, "..", "handson-base64img-tfjs")
+    handson_dir = os.path.join(current_dir, "..", "hands-on")
     os.makedirs(handson_dir, exist_ok=True)
     original_img.save(os.path.join(handson_dir, f"{name}_original.png"))
     adversarial_img.save(os.path.join(handson_dir, f"{name}_hacked.png"))
@@ -131,7 +131,7 @@ for target in targets:
 
 # js_contentの作成
 current_dir = os.path.dirname(os.path.abspath(__file__))
-js_path = os.path.join(current_dir, "..", "handson-base64img-tfjs", "images.js")
+js_path = os.path.join(current_dir, "..", "hands-on", "images.js")
 
 # favicon.icoのBase64エンコード
 favicon_path = os.path.join(current_dir, "favicon.ico")
