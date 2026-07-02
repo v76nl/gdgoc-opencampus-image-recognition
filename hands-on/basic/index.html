@@ -47,31 +47,6 @@
                         height="224"
                     ></canvas>
                 </div>
-                <div>
-                    <h3>AIの視界</h3>
-                    <canvas
-                        id="xaiCanvas"
-                        width="224"
-                        height="224"
-                    ></canvas>
-                </div>
-            </div>
-
-            <div class="subject-selector">
-                <button
-                    id="dogTab"
-                    class="tab-button"
-                    onclick="selectSubject('dog')"
-                >
-                    犬の画像
-                </button>
-                <button
-                    id="catTab"
-                    class="tab-button"
-                    onclick="selectSubject('cat')"
-                >
-                    猫の画像
-                </button>
             </div>
 
             <div>
@@ -82,10 +57,6 @@
                     加工された画像を読込
                 </button>
                 <button onclick="runInference()">AIで解析</button>
-                <button onclick="visualizeDifference()">
-                    XAIフィルター適用
-                </button>
-                <p>※XAI: Explainable AI (説明可能なAI)</p>
             </div>
 
             <div
