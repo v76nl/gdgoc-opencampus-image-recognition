@@ -133,7 +133,17 @@ for target in targets:
 current_dir = os.path.dirname(os.path.abspath(__file__))
 js_path = os.path.join(current_dir, "..", "handson-base64img-tfjs", "images.js")
 
+# favicon.icoのBase64エンコード
+favicon_path = os.path.join(current_dir, "favicon.ico")
+favicon_url = ""
+if os.path.exists(favicon_path):
+    with open(favicon_path, "rb") as f:
+        favicon_data = f.read()
+        favicon_base64 = base64.b64encode(favicon_data).decode("utf-8")
+        favicon_url = f"data:image/x-icon;base64,{favicon_base64}"
+
 js_content = f"""// Base64 image data for local file:// access without CORS/Tainted canvas errors.
+const FAVICON_BASE64 = "{favicon_url}";
 const DOG_ORIGINAL_IMAGE_BASE64 = "{base64_results['DOG_ORIGINAL']}";
 const DOG_HACKED_IMAGE_BASE64 = "{base64_results['DOG_HACKED']}";
 const CAT_ORIGINAL_IMAGE_BASE64 = "{base64_results['CAT_ORIGINAL']}";

@@ -183,5 +183,9 @@ function visualizeDifference() {
 }
 
 // 初期化処理の実行
+const faviconLink = document.getElementById("favicon");
+if (faviconLink && typeof FAVICON_BASE64 !== "undefined") {
+    faviconLink.href = FAVICON_BASE64;
+}
 selectSubject("dog");
 loadModel();
