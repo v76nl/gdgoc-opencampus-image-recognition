@@ -25,15 +25,24 @@ Base64 + TensorFlow.js。
 
     ピクセル差分の計算処理は、Canvas 標準の `Uint8ClampedArray` (1次元の型付き配列) のまま直接アクセスして処理。オブジェクトへの変換を挟まないことで、メモリアロケーションと型変換のオーバーヘッドを無くしている。
 
+- `hands-on/` にはpngファイルがあるが、実際に使う画像の本体はimages.jsにあるbase64文字列なので、これらpngファイルはあくまでイメージのためだけ。
+
 ## ディレクトリ構造
 
 ```text
 .
-├── hands-on/                    # 参加者が作業するフロントエンド側
-│   ├── index.html               # アプリの画面構造
-│   ├── style.css                # 画面のスタイル定義
-│   ├── script.js                # 画像処理および推論のフロントロジック
-│   └── images.js                # base64エンコードされた画像データ（自動生成）
+├── hands-on/                    # フロントエンド側コード
+│   ├── index.html               # 完成版（complete）へのリダイレクトHTML
+│   ├── images.js                # base64エンコードされた画像データ（自動生成・templateとcompleteで共有）
+│   ├── template/                # 参加者配布用テンプレート（TODO部分あり、未完成な状態）
+│   │   ├── index.html
+│   │   ├── style.css
+│   │   └── script.js
+│   │
+│   └── complete/                # 完成版（すべての機能が実装済みの検証用）
+│       ├── index.html
+│       ├── style.css
+│       └── script.js
 │
 └── prepare/                     # 運営が事前に使用する、画像のbase64化および確認スクリプト
     ├── main.py                  # 敵対的サンプル画像生成＆base64変換スクリプト
