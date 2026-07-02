@@ -51,12 +51,29 @@
                 </div>
             </div>
 
-            <div>
-                <button onclick="drawImage(ORIGINAL_IMAGE_BASE64)">
-                    通常画像をロード
+            <div class="subject-selector">
+                <button
+                    id="dogTab"
+                    class="tab-button"
+                    onclick="selectSubject('dog')"
+                >
+                    犬の画像
                 </button>
-                <button onclick="drawImage(HACKED_IMAGE_BASE64)">
-                    加工画像をロード
+                <button
+                    id="catTab"
+                    class="tab-button"
+                    onclick="selectSubject('cat')"
+                >
+                    猫の画像
+                </button>
+            </div>
+
+            <div>
+                <button onclick="loadSelectedImage('original')">
+                    正常な画像を読込
+                </button>
+                <button onclick="loadSelectedImage('hacked')">
+                    加工された画像を読込
                 </button>
                 <button onclick="runInference()">AIで解析</button>
                 <button onclick="visualizeDifference()">
