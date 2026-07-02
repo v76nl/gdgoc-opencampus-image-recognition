@@ -2,7 +2,7 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8" />
-        <title>中央大学国際情報学部オープンキャンパス</title>
+        <title>中央大学国際情報学部オープンキャンパス - template</title>
 
         <link
             rel="preconnect"
@@ -36,41 +36,54 @@
     <body>
         <div class="container">
             <h1>中央大学国際情報学部オープンキャンパス</h1>
-            <h3>～画像認識AIの動作と裏側の開発を体験してみよう～</h3>
-            <div id="modelStatus" class="model-status">AIモデルの準備中...</div>
+            <h3 class="subtitle">
+                ～画像認識AIの動作と裏側の開発を体験してみよう～
+            </h3>
 
-            <div class="display-area">
-                <div>
-                    <h3>入力画像</h3>
-                    <canvas
-                        id="mainCanvas"
-                        width="224"
-                        height="224"
-                    ></canvas>
+            <div class="app-layout">
+                <!-- 左カラム: キャンバス表示エリア -->
+                <div class="left-panel">
+                    <div class="display-area">
+                        <div>
+                            <h3>入力画像</h3>
+                            <canvas
+                                id="mainCanvas"
+                                width="224"
+                                height="224"
+                            ></canvas>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <div>
-                <button onclick="loadSelectedImage('original')">
-                    正常な画像を読込
-                </button>
-                <button onclick="loadSelectedImage('hacked')">
-                    加工された画像を読込
-                </button>
-                <button onclick="runInference()">AIで解析</button>
-            </div>
+                <!-- 右カラム: 操作パネル -->
+                <div class="right-panel">
+                    <div class="control-panel">
+                        <button onclick="loadSelectedImage('original')">
+                            正常な画像を読込
+                        </button>
+                        <button onclick="loadSelectedImage('hacked')">
+                            加工された画像を読込
+                        </button>
+                        <button onclick="runInference()">AIで解析</button>
+                    </div>
 
-            <div
-                id="resultBox"
-                class="result-box"
-            >
-                画像をロードして解析ボタンを押してください。
+                    <div
+                        id="resultBox"
+                        class="result-box"
+                    >
+                        ここに解析結果が表示されます。
+                    </div>
+                </div>
             </div>
         </div>
         <footer>
             <p>中央大学国際情報学部事務室, GDGoC Chuo University</p>
         </footer>
 
+        <div
+            id="toastContainer"
+            class="toast-container"
+        ></div>
         <script src="script.js"></script>
     </body>
 </html>

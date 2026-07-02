@@ -62,3 +62,21 @@ Base64 + TensorFlow.js。
 
 2. 7/15まで: html, css, jsの隠す部分、つまり参加者に書いてもらう部分を決め、TODOとして切り出し隠す
 3. 誤認識部分を切り出す
+
+## ファイル単位での比較
+
+- basic と template の比較
+
+```bash
+git diff --no-index hands-on/template/script.js hands-on/basic/script.js
+git diff --no-index hands-on/template/index.html hands-on/basic/index.html
+git diff --no-index hands-on/template/style.css hands-on/basic/style.css
+```
+
+- basic と complete の比較
+
+```bash
+git diff --no-index hands-on/basic/script.js hands-on/complete/script.js
+git diff --no-index hands-on/basic/index.html hands-on/complete/index.html
+git diff --no-index hands-on/basic/style.css hands-on/complete/style.css
+```

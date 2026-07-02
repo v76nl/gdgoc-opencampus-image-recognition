@@ -16,7 +16,7 @@ h1 {
     max-width: 900px;
     margin: 0 auto;
     background: #fff;
-    padding: 30px;
+    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -101,17 +101,137 @@ button:hover::after {
     background-color: #d32f2f;
 }
 
-.model-status {
+.subtitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
     margin-bottom: 20px;
-    padding: 8px 16px;
-    border-radius: 4px;
+    font-size: 16px;
+    color: #666;
+    font-weight: 500;
+}
+
+.model-status {
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 12px;
     background-color: #ffebee;
     color: #c62828;
-    font-weight: 500;
+    font-weight: 700;
+    line-height: 1;
     display: inline-block;
 }
 
 .model-status.ready {
     background-color: #e8f5e9;
     color: #2e7d32;
+}
+
+/* 2カラムレイアウト用スタイル */
+.app-layout {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.left-panel {
+    flex: 0 0 auto;
+}
+
+.right-panel {
+    flex: 1 1 auto;
+    max-width: 50%;
+    background: #fdfdfd;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1.5px dashed #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 320px;
+    box-sizing: border-box;
+}
+
+.control-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.control-panel button {
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    font-size: 15px;
+}
+
+.result-box {
+    margin-top: auto;
+    padding: 15px;
+    background-color: #f1f3f5;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #495057;
+    min-height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dee2e6;
+    box-sizing: border-box;
+}
+
+.xai-note {
+    margin-top: 15px;
+    font-size: 12px;
+    color: #888;
+    text-align: left;
+}
+
+/* トースト通知用スタイル */
+.toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    min-width: 280px;
+    padding: 12px 20px;
+    border-radius: 6px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    animation: slideIn 0.3s ease;
+    text-align: left;
+}
+
+.toast.fade-out {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

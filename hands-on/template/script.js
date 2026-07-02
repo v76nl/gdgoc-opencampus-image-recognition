@@ -12,13 +12,30 @@ function loadSelectedImage(type) {
     drawImage(base64);
 }
 
+// トースト通知を表示する関数
+function showToast(message, type = "info") {
+    const container = document.getElementById("toastContainer");
+    if (!container) return;
+
+    const toast = document.createElement("div");
+    toast.className = `toast ${type}`;
+    toast.innerText = message;
+
+    container.appendChild(toast);
+
+    // 3秒後にフェードアウトを開始し、3.5秒後に削除
+    setTimeout(() => {
+        toast.classList.add("fade-out");
+        setTimeout(() => {
+            toast.remove();
+        }, 500);
+    }, 3000);
+}
+
 async function loadModel() {
-    const statusEl = document.getElementById("modelStatus");
-    statusEl.innerText = "AIモデルを読み込み中……";
-    statusEl.classList.remove("ready");
+    showToast("AIモデルを読み込み中……そのままお待ちください。", "info");
     model = await mobilenet.load({ version: 2, alpha: 1.0 });
-    statusEl.innerText = "AIモデルの準備が完了しました。";
-    statusEl.classList.add("ready");
+    showToast("AIモデルの準備が完了しました。", "success");
 }
 
 function drawImage(imageSrc) {
@@ -27,8 +44,7 @@ function drawImage(imageSrc) {
     img.onload = () => {
         mainCtx.drawImage(img, 0, 0, 224, 224);
         currentImageData = mainCtx.getImageData(0, 0, 224, 224);
-        document.getElementById("resultBox").innerText =
-            "画像をロードしました。解析を実行してください。";
+        showToast("画像をロードしました。", "success");
     };
 }
 
@@ -55,7 +71,7 @@ function translateClassName(className) {
 
 async function runInference() {
     if (!model) {
-        alert("AIモデルの読み込みが終わっていません。");
+        showToast("AIモデルの読み込みが終わっていません。準備が完了するまでお待ちください。", "warning");
         return;
     }
     document.getElementById("resultBox").innerText = "解析中...";
