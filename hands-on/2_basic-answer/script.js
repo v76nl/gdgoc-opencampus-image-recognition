@@ -6,6 +6,13 @@ const mainCtx = mainCanvas.getContext("2d");
 let currentImageData = null;
 
 async function run_inference() {
+    if (!model) {
+        show_toast(
+            "AIモデルの読み込みが終わっていません。準備が完了するまでお待ちください。",
+            "warning"
+        );
+        return;
+    }
     document.getElementById("resultBox").innerText = "解析中...";
 
     const predictions = await model.classify(mainCanvas);
@@ -46,10 +53,6 @@ async function load_model() {
     show_toast("AIモデルを読み込み中……そのままお待ちください。", "info");
     model = await mobilenet.load({ version: 2, alpha: 1.0 });
     show_toast("AIモデルの準備が完了しました。", "success");
-    const analyzeBtn = document.getElementById("analyzeButton");
-    if (analyzeBtn) {
-        analyzeBtn.disabled = false;
-    }
 }
 
 function draw_image(imageSrc) {

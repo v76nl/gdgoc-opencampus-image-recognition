@@ -43,10 +43,6 @@ button {
     cursor: pointer;
     overflow: hidden;
 }
-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
 button::after {
     content: "";
     position: absolute;
