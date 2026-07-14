@@ -1,0 +1,11 @@
+追加するプログラム
+onclick="load_selected_image()"
+onclick="run_inference()"
+
+変更前
+<button>画像を読込</button>
+<button>AIで解析</button>
+
+変更後
+<button onclick="load_selected_image()">画像を読込</button>
+<button onclick="run_inference()">AIで解析</button>

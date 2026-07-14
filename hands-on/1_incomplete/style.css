@@ -3,8 +3,8 @@
 }
 
 button {
-    /* ボタンをHTMLで実装後、色をつける。その際学部のカラーについても軽く触れる */
-    /* background-color: var(--itl-red); */
+    /* ここにプログラムを加えてください */
+
     position: relative;
     font-family: "Zen Maru Gothic", sans-serif;
     font-size: 16px;
@@ -147,7 +147,9 @@ canvas {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
     animation: slideIn 0.3s ease;
     text-align: left;
 }

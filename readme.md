@@ -15,17 +15,17 @@ gdgoc-opencampus-image-recognition
 ├── hands-on/                    # フロントエンド側コード
 │   ├── index.html               # 完成版（complete）へのリダイレクトHTML
 │   ├── images.js                # base64エンコードされた画像データ（自動生成・各バージョンで共有）
-│   ├── 1_incomplete/            # ① 参加者配布用テンプレート（TODO部分あり、未完成な状態）
+│   ├── 1_incomplete/            # 参加者配布用テンプレート（TODO部分あり、未完成な状態）
 │   │   ├── index.html
 │   │   ├── style.css
 │   │   └── script.js
 │   │
-│   ├── 2_basic-answer/          # ② 最低限の機能が動作する中間状態のコード
+│   ├── 2_basic-answer/          # 最低限の機能が動作する中間状態のコード
 │   │   ├── index.html
 │   │   ├── style.css
 │   │   └── script.js
 │   │
-│   └── 3_complete/              # ③ 全機能が実装済みの答えのコード
+│   └── 3_complete/              # 全機能が実装済みの答えのコード
 │       ├── index.html
 │       ├── style.css
 │       └── script.js
@@ -61,10 +61,6 @@ Base64 + TensorFlow.js。<br>
 ローカルサーバーが立てにくい環境なので、CORSやWebGL Tainted canvas エラーを回避するため、画像ファイルをあらかじめ Python で Base64 データ URL 形式に変換し、JavaScript の定数として `images.js` に出力しておく。
 
 ## その他
-
-- 機能: 判定結果の簡略化・日本語化
-
-    判定時に、ImageNet の専門的な品種名（tabby, golden retriever 等）を自動で「ネコ (cat)」「イヌ (dog)」のように分かりやすい日本語に翻訳して出力する。
 
 - 技術的な補足
 

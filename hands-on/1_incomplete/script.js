@@ -9,7 +9,8 @@ let currentImageData = null;
 // (inference: 推論する)
 async function run_inference() {
     show_notification("AI解析機能が実装されていません。指示をお待ちください。", "info");
-    // if (!model) {
+    // const model_is_not_loaded = !model;
+    // if (model_is_not_loaded) {
     //     show_notification(
     //         "AIモデルの読み込みが終わっていません。準備が完了するまでお待ちください。",
     //         "warning"

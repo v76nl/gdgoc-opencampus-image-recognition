@@ -6,7 +6,8 @@ const mainCtx = mainCanvas.getContext("2d");
 let currentImageData = null;
 
 async function run_inference() {
-    if (!model) {
+    const model_is_not_loaded = !model;
+    if (model_is_not_loaded) {
         show_notification(
             "AIモデルの読み込みが終わっていません。準備が完了するまでお待ちください。",
             "warning"
