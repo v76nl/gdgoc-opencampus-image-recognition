@@ -68,22 +68,22 @@ function draw_image(imageSrc) {
     };
 }
 
-// 英語の判定結果を日本語（およびシンプルな英語表記）に翻訳・簡略化する関数
+// 英語の判定結果を日本語に翻訳・簡略化する関数
 function translate_class_name(className) {
     const lower = className.toLowerCase();
 
     if (lower.includes("banana")) {
-        return "バナナ (banana)";
+        return "バナナ";
     }
 
     // ライオンの判定
     if (lower.includes("lion")) {
-        return "ライオン (lion)";
+        return "ライオン";
     }
 
     // トラの判定
     if (lower.includes("tiger")) {
-        return "トラ (tiger)";
+        return "トラ";
     }
 
     return className;
