@@ -14,7 +14,7 @@ let currentSubject = "dog";
 
 async function run_inference() {
     if (!model) {
-        show_toast(
+        show_notification(
             "AIモデルの読み込みが終わっていません。準備が完了するまでお待ちください。",
             "warning"
         );
@@ -87,8 +87,8 @@ function load_original_image() {
     };
 }
 
-// トースト通知を表示する関数
-function show_toast(message, type = "info") {
+// 通知トーストを表示する関数
+function show_notification(message, type = "info") {
     const container = document.getElementById("toastContainer");
     if (!container) return;
 
@@ -108,9 +108,9 @@ function show_toast(message, type = "info") {
 }
 
 async function load_model() {
-    show_toast("AIモデルを読み込み中……そのままお待ちください。", "info");
+    show_notification("AIモデルを読み込み中……そのままお待ちください。", "info");
     model = await mobilenet.load({ version: 2, alpha: 1.0 });
-    show_toast("AIモデルの準備が完了しました。", "success");
+    show_notification("AIモデルの準備が完了しました。", "success");
 }
 
 function draw_image(imageSrc) {
@@ -122,7 +122,7 @@ function draw_image(imageSrc) {
 
         // 画像切り替え時はXAIキャンバスをクリアする
         xaiCtx.clearRect(0, 0, 224, 224);
-        show_toast("画像をロードしました。", "success");
+        show_notification("画像をロードしました。", "success");
     };
 }
 
@@ -160,7 +160,7 @@ function translate_class_name(className) {
 function visualize_difference() {
     try {
         if (!originalImageData || !currentImageData) {
-            show_toast("画像の読み込みが不十分です。", "warning");
+            show_notification("画像の読み込みが不十分です。", "warning");
             return;
         }
 
