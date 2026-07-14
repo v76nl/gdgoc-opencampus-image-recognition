@@ -35,15 +35,15 @@ def get_base64_data_url(image_array):
     img_str = base64.b64encode(buffered.getvalue()).decode("utf-8")
     return f"data:image/png;base64,{img_str}"
 
-# 対象画像の設定 (犬と猫)
+# 対象画像の設定 (ライオンとトラ)
 targets = [
     {
-        "name": "dog",
-        "url": "https://images.unsplash.com/photo-1552053831-71594a27632d?w=224&h=224&fit=crop"
+        "name": "lion",
+        "url": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?w=224&h=224&fit=crop"
     },
     {
-        "name": "cat",
-        "url": "https://images.unsplash.com/photo-1519052537078-e6302a4968d4?w=224&h=224&fit=crop"
+        "name": "tiger",
+        "url": "https://images.unsplash.com/photo-1561731216-c3a4d99437d5?w=224&h=224&fit=crop"
     }
 ]
 
@@ -96,11 +96,11 @@ for target in targets:
     adversarial_img = Image.fromarray(adversarial_image_array)
 
     # prepare/ 直下に保存
-    original_img.save(f"{name}_original.png")
-    adversarial_img.save(f"{name}_hacked.png")
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    original_img.save(os.path.join(current_dir, f"{name}_original.png"))
+    adversarial_img.save(os.path.join(current_dir, f"{name}_hacked.png"))
 
     # hands-on/ 直下にも保存
-    current_dir = os.path.dirname(os.path.abspath(__file__))
     handson_dir = os.path.join(current_dir, "..", "hands-on")
     os.makedirs(handson_dir, exist_ok=True)
     original_img.save(os.path.join(handson_dir, f"{name}_original.png"))
@@ -113,7 +113,7 @@ for target in targets:
     base64_results[f"{name.upper()}_HACKED"] = get_base64_data_url(adversarial_image_array)
 
     # テスト推論
-    orig_img = Image.open(f"{name}_original.png")
+    orig_img = Image.open(os.path.join(current_dir, f"{name}_original.png"))
     orig_input = preprocess_image(orig_img)
     orig_pred = model(orig_input)
     decoded_orig = tf.keras.applications.mobilenet_v2.decode_predictions(orig_pred.numpy(), top=3)[0]
@@ -121,7 +121,7 @@ for target in targets:
     for i, (imagenet_id, label, prob) in enumerate(decoded_orig):
         print(f"  {i+1}: {label} ({prob*100:.2f}%)")
 
-    hacked_img = Image.open(f"{name}_hacked.png")
+    hacked_img = Image.open(os.path.join(current_dir, f"{name}_hacked.png"))
     hacked_input = preprocess_image(hacked_img)
     hacked_pred = model(hacked_input)
     decoded_hacked = tf.keras.applications.mobilenet_v2.decode_predictions(hacked_pred.numpy(), top=3)[0]
@@ -144,10 +144,10 @@ if os.path.exists(favicon_path):
 
 js_content = f"""// Base64 image data for local file:// access without CORS/Tainted canvas errors.
 const FAVICON_BASE64 = "{favicon_url}";
-const DOG_ORIGINAL_IMAGE_BASE64 = "{base64_results['DOG_ORIGINAL']}";
-const DOG_HACKED_IMAGE_BASE64 = "{base64_results['DOG_HACKED']}";
-const CAT_ORIGINAL_IMAGE_BASE64 = "{base64_results['CAT_ORIGINAL']}";
-const CAT_HACKED_IMAGE_BASE64 = "{base64_results['CAT_HACKED']}";
+const LION_ORIGINAL_IMAGE_BASE64 = "{base64_results['LION_ORIGINAL']}";
+const LION_HACKED_IMAGE_BASE64 = "{base64_results['LION_HACKED']}";
+const TIGER_ORIGINAL_IMAGE_BASE64 = "{base64_results['TIGER_ORIGINAL']}";
+const TIGER_HACKED_IMAGE_BASE64 = "{base64_results['TIGER_HACKED']}";
 """
 
 with open(js_path, "w", encoding="utf-8") as f:

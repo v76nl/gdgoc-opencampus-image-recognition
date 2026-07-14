@@ -2,34 +2,6 @@
     --itl-red: #e83421;
 }
 
-body {
-    font-family: "Zen Maru Gothic", sans-serif;
-    background-color: #f8f9fa;
-    color: #333;
-    text-align: center;
-    padding: 20px;
-}
-h1 {
-    margin-block-start: 0;
-}
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-.display-area {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin-bottom: 20px;
-}
-canvas {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
 button {
     position: relative;
     font-family: "Zen Maru Gothic", sans-serif;
@@ -57,6 +29,35 @@ button::after {
 }
 button:hover::after {
     opacity: 1;
+}
+
+body {
+    font-family: "Zen Maru Gothic", sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+}
+h1 {
+    margin-block-start: 0;
+}
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.display-area {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+canvas {
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 .subtitle {
     margin-bottom: 20px;
@@ -165,4 +166,3 @@ button:hover::after {
         transform: translateY(0);
     }
 }
-

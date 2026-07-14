@@ -9,8 +9,8 @@ let originalImageData = null;
 // 現在ロードされている画像のピクセルデータ
 let currentImageData = null;
 
-// 現在選択されている対象 (dog / cat)
-let currentSubject = "dog";
+// 現在選択されている対象 (lion / tiger)
+let currentSubject = "lion";
 
 async function run_inference() {
     if (!model) {
@@ -52,12 +52,12 @@ function select_subject(subject) {
 function load_selected_image(type) {
     const base64 =
         type === "original"
-            ? currentSubject === "dog"
-                ? DOG_ORIGINAL_IMAGE_BASE64
-                : CAT_ORIGINAL_IMAGE_BASE64
-            : currentSubject === "dog"
-              ? DOG_HACKED_IMAGE_BASE64
-              : CAT_HACKED_IMAGE_BASE64;
+            ? currentSubject === "lion"
+                ? LION_ORIGINAL_IMAGE_BASE64
+                : TIGER_ORIGINAL_IMAGE_BASE64
+            : currentSubject === "lion"
+              ? LION_HACKED_IMAGE_BASE64
+              : TIGER_HACKED_IMAGE_BASE64;
     draw_image(base64);
 }
 
@@ -65,9 +65,9 @@ function load_selected_image(type) {
 function load_original_image() {
     const img = new Image();
     img.src =
-        currentSubject === "dog"
-            ? DOG_ORIGINAL_IMAGE_BASE64
-            : CAT_ORIGINAL_IMAGE_BASE64;
+        currentSubject === "lion"
+            ? LION_ORIGINAL_IMAGE_BASE64
+            : TIGER_ORIGINAL_IMAGE_BASE64;
     img.onload = () => {
         try {
             const tempCanvas = document.createElement("canvas");
@@ -134,24 +134,14 @@ function translate_class_name(className) {
         return "バナナ (banana)";
     }
 
-    // 猫の判定
-    if (
-        lower.includes("cat") ||
-        lower.includes("tabby") ||
-        lower.includes("siamese") ||
-        lower.includes("persian")
-    ) {
-        return "ネコ (cat)";
+    // ライオンの判定
+    if (lower.includes("lion")) {
+        return "ライオン (lion)";
     }
 
-    // 犬の判定
-    if (
-        lower.includes("dog") ||
-        lower.includes("retriever") ||
-        lower.includes("saluki") ||
-        lower.includes("setter")
-    ) {
-        return "イヌ (dog)";
+    // トラの判定
+    if (lower.includes("tiger")) {
+        return "トラ (tiger)";
     }
 
     return className;

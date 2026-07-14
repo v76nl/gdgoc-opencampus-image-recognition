@@ -29,7 +29,7 @@ async function run_inference() {
 }
 
 function load_selected_image() {
-    draw_image(DOG_ORIGINAL_IMAGE_BASE64);
+    draw_image(LION_ORIGINAL_IMAGE_BASE64);
 }
 
 // 通知トーストを表示する関数
@@ -76,14 +76,14 @@ function translate_class_name(className) {
         return "バナナ (banana)";
     }
 
-    // 犬の判定
-    if (
-        lower.includes("dog") ||
-        lower.includes("retriever") ||
-        lower.includes("saluki") ||
-        lower.includes("setter")
-    ) {
-        return "イヌ (dog)";
+    // ライオンの判定
+    if (lower.includes("lion")) {
+        return "ライオン (lion)";
+    }
+
+    // トラの判定
+    if (lower.includes("tiger")) {
+        return "トラ (tiger)";
     }
 
     return className;
