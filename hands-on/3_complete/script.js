@@ -12,7 +12,20 @@ let currentImageData = null;
 // 現在選択されている対象 (dog / cat)
 let currentSubject = "dog";
 
-function selectSubject(subject) {
+async function run_inference() {
+    document.getElementById("resultBox").innerText = "解析中...";
+
+    const predictions = await model.classify(mainCanvas);
+    const topPrediction = predictions[0];
+    const probability = (topPrediction.probability * 100).toFixed(2);
+
+    const displayClassName = translate_class_name(topPrediction.className);
+
+    document.getElementById("resultBox").innerText =
+        `判定結果: ${displayClassName} (確信度: ${probability}%)`;
+}
+
+function select_subject(subject) {
     currentSubject = subject;
 
     // タブのスタイル更新
@@ -25,11 +38,11 @@ function selectSubject(subject) {
     }
 
     // 対象切り替え時に自動的にオリジナル画像をロードして表示
-    loadOriginalImage();
-    loadSelectedImage("original");
+    load_original_image();
+    load_selected_image("original");
 }
 
-function loadSelectedImage(type) {
+function load_selected_image(type) {
     const base64 =
         type === "original"
             ? currentSubject === "dog"
@@ -38,10 +51,11 @@ function loadSelectedImage(type) {
             : currentSubject === "dog"
               ? DOG_HACKED_IMAGE_BASE64
               : CAT_HACKED_IMAGE_BASE64;
-    drawImage(base64);
+    draw_image(base64);
 }
 
-function loadOriginalImage() {
+// オリジナル画像を裏側で読み込んでピクセルデータを保持する関数
+function load_original_image() {
     const img = new Image();
     img.src =
         currentSubject === "dog"
@@ -67,7 +81,7 @@ function loadOriginalImage() {
 }
 
 // トースト通知を表示する関数
-function showToast(message, type = "info") {
+function show_toast(message, type = "info") {
     const container = document.getElementById("toastContainer");
     if (!container) return;
 
@@ -86,13 +100,17 @@ function showToast(message, type = "info") {
     }, 3000);
 }
 
-async function loadModel() {
-    showToast("AIモデルを読み込み中……そのままお待ちください。", "info");
+async function load_model() {
+    show_toast("AIモデルを読み込み中……そのままお待ちください。", "info");
     model = await mobilenet.load({ version: 2, alpha: 1.0 });
-    showToast("AIモデルの準備が完了しました。", "success");
+    show_toast("AIモデルの準備が完了しました。", "success");
+    const analyzeBtn = document.getElementById("analyzeButton");
+    if (analyzeBtn) {
+        analyzeBtn.disabled = false;
+    }
 }
 
-function drawImage(imageSrc) {
+function draw_image(imageSrc) {
     const img = new Image();
     img.src = imageSrc;
     img.onload = () => {
@@ -101,12 +119,12 @@ function drawImage(imageSrc) {
 
         // 画像切り替え時はXAIキャンバスをクリアする
         xaiCtx.clearRect(0, 0, 224, 224);
-        showToast("画像をロードしました。", "success");
+        show_toast("画像をロードしました。", "success");
     };
 }
 
 // 英語の判定結果を日本語（およびシンプルな英語表記）に翻訳・簡略化する関数
-function translateClassName(className) {
+function translate_class_name(className) {
     const lower = className.toLowerCase();
 
     if (lower.includes("banana")) {
@@ -136,30 +154,10 @@ function translateClassName(className) {
     return className;
 }
 
-async function runInference() {
-    if (!model) {
-        showToast(
-            "AIモデルの読み込みが終わっていません。準備が完了するまでお待ちください。",
-            "warning"
-        );
-        return;
-    }
-    document.getElementById("resultBox").innerText = "解析中...";
-
-    const predictions = await model.classify(mainCanvas);
-    const topPrediction = predictions[0];
-    const probability = (topPrediction.probability * 100).toFixed(2);
-
-    const displayClassName = translateClassName(topPrediction.className);
-
-    document.getElementById("resultBox").innerText =
-        `判定結果: ${displayClassName} (確信度: ${probability}%)`;
-}
-
-function visualizeDifference() {
+function visualize_difference() {
     try {
         if (!originalImageData || !currentImageData) {
-            showToast("画像の読み込みが不十分です。", "warning");
+            show_toast("画像の読み込みが不十分です。", "warning");
             return;
         }
 
@@ -203,4 +201,4 @@ const faviconLink = document.getElementById("favicon");
 if (faviconLink && typeof FAVICON_BASE64 !== "undefined") {
     faviconLink.href = FAVICON_BASE64;
 }
-loadModel();
+load_model();

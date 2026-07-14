@@ -2,7 +2,7 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8" />
-        <title>中央大学国際情報学部オープンキャンパス - basic</title>
+        <title>中央大学国際情報学部オープンキャンパス - 2_basic-answer</title>
 
         <link
             rel="preconnect"
@@ -58,10 +58,10 @@
                 <!-- 右カラム: 操作パネル -->
                 <div class="right-panel">
                     <div class="control-panel">
-                        <button onclick="loadSelectedImage()">
+                        <button onclick="load_selected_image()">
                             画像を読込
                         </button>
-                        <button onclick="runInference()">AIで解析</button>
+                        <button id="analyzeButton" onclick="run_inference()" disabled>AIで解析</button>
                     </div>
 
                     <div

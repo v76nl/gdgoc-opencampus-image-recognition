@@ -2,7 +2,7 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8" />
-        <title>中央大学国際情報学部オープンキャンパス - template</title>
+        <title>中央大学国際情報学部オープンキャンパス - 1_incomplete</title>
 
         <link
             rel="preconnect"
@@ -61,7 +61,7 @@
                 <!-- <div class="right-panel">
                     <div class="control-panel">
                         <button>画像を読込</button>
-                        <button>AIで解析</button>
+                        <button id="analyzeButton" disabled>AIで解析</button>
                     </div>
 
                     <div
@@ -75,10 +75,10 @@
                 <!-- ② ボタンに機能を実装 → 画像読込は動くようになるが、AI解析はJSで実装していないため動かない状態 -->
                 <!-- <div class="right-panel">
                     <div class="control-panel">
-                        <button onclick="loadSelectedImage()">
+                        <button onclick="load_selected_image()">
                             画像を読込
                         </button>
-                        <button onclick="runInference()">AIで解析</button>
+                        <button id="analyzeButton" onclick="run_inference()" disabled>AIで解析</button>
                     </div>
 
                     <div

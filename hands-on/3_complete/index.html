@@ -2,7 +2,7 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8" />
-        <title>中央大学国際情報学部オープンキャンパス - complete</title>
+        <title>中央大学国際情報学部オープンキャンパス - 3_complete</title>
 
         <link
             rel="preconnect"
@@ -69,28 +69,28 @@
                         <button
                             id="dogTab"
                             class="tab-button"
-                            onclick="selectSubject('dog')"
+                            onclick="select_subject('dog')"
                         >
                             犬の画像
                         </button>
                         <button
                             id="catTab"
                             class="tab-button"
-                            onclick="selectSubject('cat')"
+                            onclick="select_subject('cat')"
                         >
                             猫の画像
                         </button>
                     </div>
 
                     <div class="control-panel">
-                        <button onclick="loadSelectedImage('original')">
+                        <button onclick="load_selected_image('original')">
                             正常な画像を読込
                         </button>
-                        <button onclick="loadSelectedImage('hacked')">
+                        <button onclick="load_selected_image('hacked')">
                             加工された画像を読込
                         </button>
-                        <button onclick="runInference()">AIで解析</button>
-                        <button onclick="visualizeDifference()">
+                        <button id="analyzeButton" onclick="run_inference()" disabled>AIで解析</button>
+                        <button onclick="visualize_difference()">
                             XAIフィルター適用
                         </button>
                     </div>

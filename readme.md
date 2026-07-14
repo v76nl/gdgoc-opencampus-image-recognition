@@ -2,11 +2,11 @@
 
 オープンキャンパスの環境 (iTL502WS / PC室) で開発体験を行うことが可能な、画像解析GUIアプリプロジェクト
 
-completeを試す: https://v76nl.github.io/gdgoc-opencampus-image-recognition/complete/index.html
+3_completeを試す: https://v76nl.github.io/gdgoc-opencampus-image-recognition/3_complete/index.html
 
-basicを試す: https://v76nl.github.io/gdgoc-opencampus-image-recognition/basic/index.html
+2_basic-answerを試す: https://v76nl.github.io/gdgoc-opencampus-image-recognition/2_basic-answer/index.html
 
-templateを試す: https://v76nl.github.io/gdgoc-opencampus-image-recognition/template/index.html
+1_incompleteを試す: https://v76nl.github.io/gdgoc-opencampus-image-recognition/1_incomplete/index.html
 
 ## ディレクトリ構造
 
@@ -15,17 +15,17 @@ gdgoc-opencampus-image-recognition
 ├── hands-on/                    # フロントエンド側コード
 │   ├── index.html               # 完成版（complete）へのリダイレクトHTML
 │   ├── images.js                # base64エンコードされた画像データ（自動生成・各バージョンで共有）
-│   ├── template/                # ① 参加者配布用テンプレート（TODO部分あり、未完成な状態）
+│   ├── 1_incomplete/            # ① 参加者配布用テンプレート（TODO部分あり、未完成な状態）
 │   │   ├── index.html
 │   │   ├── style.css
 │   │   └── script.js
 │   │
-│   ├── basic/                   # ② 最低限の機能が動作する中間状態のコード
+│   ├── 2_basic-answer/          # ② 最低限の機能が動作する中間状態のコード
 │   │   ├── index.html
 │   │   ├── style.css
 │   │   └── script.js
 │   │
-│   └── complete/                # ③ 全機能が実装済みの答えのコード
+│   └── 3_complete/              # ③ 全機能が実装済みの答えのコード
 │       ├── index.html
 │       ├── style.css
 │       └── script.js
@@ -40,10 +40,10 @@ gdgoc-opencampus-image-recognition
 1. HTML: ボタンを見かけだけ作成する
 2. HTML: ボタンに機能を付加する
 
-    JS側では `loadSelectedImage()` は実装済みなので「画像を読込」ボタンは動くが、`runInference()` が未実装なのでAI解析は行われない
+    JS側では `load_selected_image()` は実装済みなので「画像を読込」ボタンは動くが、`run_inference()` が未実装なのでAI解析は行われない
 
 3. CSS: ボタンに色をつける
-4. JS: `runInference()` を実装する
+4. JS: `run_inference()` を実装する
 
 ## 開発TODO
 
@@ -74,18 +74,18 @@ Base64 + TensorFlow.js。<br>
 
 ## ファイル単位での比較
 
-- template と basic の比較
+- 1_incomplete と 2_basic-answer の比較
 
     ```bash
-    git diff --no-index hands-on/template/script.js hands-on/basic/script.js
-    git diff --no-index hands-on/template/index.html hands-on/basic/index.html
-    git diff --no-index hands-on/template/style.css hands-on/basic/style.css
+    git diff --no-index hands-on/1_incomplete/script.js hands-on/2_basic-answer/script.js
+    git diff --no-index hands-on/1_incomplete/index.html hands-on/2_basic-answer/index.html
+    git diff --no-index hands-on/1_incomplete/style.css hands-on/2_basic-answer/style.css
     ```
 
-- basic と complete の比較
+- 2_basic-answer と 3_complete の比較
 
     ```bash
-    git diff --no-index hands-on/basic/script.js hands-on/complete/script.js
-    git diff --no-index hands-on/basic/index.html hands-on/complete/index.html
-    git diff --no-index hands-on/basic/style.css hands-on/complete/style.css
+    git diff --no-index hands-on/2_basic-answer/script.js hands-on/3_complete/script.js
+    git diff --no-index hands-on/2_basic-answer/index.html hands-on/3_complete/index.html
+    git diff --no-index hands-on/2_basic-answer/style.css hands-on/3_complete/style.css
     ```
