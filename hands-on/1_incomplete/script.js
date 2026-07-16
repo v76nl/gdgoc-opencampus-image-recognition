@@ -8,25 +8,11 @@ let currentImageData = null;
 // AIで画像認識を行うプログラムの部分
 // (inference: 推論する)
 async function run_inference() {
-    show_notification("AI画像認識機能が実装されていません。指示をお待ちください。", "info");
-    // const model_is_not_loaded = !model;
-    // if (model_is_not_loaded) {
-    //     show_notification(
-    //         "AIモデルの読み込みが終わっていません。準備が完了するまでお待ちください。",
-    //         "warning"
-    //     );
-    //     return;
-    // }
-    // document.getElementById("resultBox").innerText = "画像認識中...";
-    //
-    // const predictions = await model.classify(mainCanvas);
-    // const topPrediction = predictions[0];
-    // const probability = (topPrediction.probability * 100).toFixed(2);
-    //
-    // const displayClassName = translate_class_name(topPrediction.className);
-    //
-    // document.getElementById("resultBox").innerText =
-    //     `判定結果: ${displayClassName} (確信度: ${probability}%)`;
+    show_notification(
+        "AI画像認識機能が実装されていません。指示をお待ちください。",
+        "info"
+    );
+    // ここにプログラムを加えてください
 }
 
 function load_selected_image() {
