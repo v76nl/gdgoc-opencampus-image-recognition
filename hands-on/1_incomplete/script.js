@@ -5,10 +5,10 @@ const mainCtx = mainCanvas.getContext("2d");
 // 現在ロードされている画像のピクセルデータ
 let currentImageData = null;
 
-// AIで解析を行うプログラムの部分
+// AIで画像認識を行うプログラムの部分
 // (inference: 推論する)
 async function run_inference() {
-    show_notification("AI解析機能が実装されていません。指示をお待ちください。", "info");
+    show_notification("AI画像認識機能が実装されていません。指示をお待ちください。", "info");
     // const model_is_not_loaded = !model;
     // if (model_is_not_loaded) {
     //     show_notification(
@@ -17,7 +17,7 @@ async function run_inference() {
     //     );
     //     return;
     // }
-    // document.getElementById("resultBox").innerText = "解析中...";
+    // document.getElementById("resultBox").innerText = "画像認識中...";
     //
     // const predictions = await model.classify(mainCanvas);
     // const topPrediction = predictions[0];

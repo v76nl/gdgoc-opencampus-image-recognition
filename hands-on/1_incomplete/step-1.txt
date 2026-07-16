@@ -1,13 +1,13 @@
 <div class="right-panel">
     <div class="control-panel">
         <button>画像を読込</button>
-        <button>AIで解析</button>
+        <button>AIで画像認識</button>
     </div>
 
     <div
         id="resultBox"
         class="result-box"
     >
-        ここに解析結果が表示されます。
+        ここに画像認識結果が表示されます。
     </div>
 </div>

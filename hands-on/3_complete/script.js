@@ -21,7 +21,7 @@ async function run_inference() {
         );
         return;
     }
-    document.getElementById("resultBox").innerText = "解析中...";
+    document.getElementById("resultBox").innerText = "画像認識中...";
 
     const predictions = await model.classify(mainCanvas);
     const topPrediction = predictions[0];
